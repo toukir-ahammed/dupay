@@ -8,6 +8,7 @@ group = 'du.iit.payment'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
+
 configurations {
     developmentOnly
     runtimeClasspath {
@@ -29,8 +30,10 @@ dependencies {
 //    implementation 'org.springframework.data:spring-data-rest-hal-browser'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
-//    runtimeOnly 'org.postgresql:postgresql'
+    runtimeOnly 'org.postgresql:postgresql'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    compile  'org.springframework.boot:spring-boot-starter-data-jpa'
+    runtimeOnly 'com.h2database:h2'
 }
