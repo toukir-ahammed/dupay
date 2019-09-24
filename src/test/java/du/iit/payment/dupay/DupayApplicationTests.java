@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+
 public class DupayApplicationTests {
 
   @Autowired
@@ -47,7 +48,7 @@ public class DupayApplicationTests {
     Merchant merchant = Merchant
       .builder()
       .username("jamil")
-      .email("jamil.@gmail.com")
+      .email("jamil@gmail.com")
       .password("hadi")
       .addedBy(savedAdmin)
       .build();
@@ -60,9 +61,21 @@ public class DupayApplicationTests {
 
   @Test
   public void paymentTest(){
-    Admin admin = Admin.builder().username("abc").email("iit@gmail.com").build();
+    Admin admin = Admin
+      .builder()
+      .username("abc")
+      .email("iit2@gmail.com")
+      .password("def")
+      .build();
+
     Admin savedAdmin = userService.createAdmin(admin);
-    Merchant merchant =  Merchant.builder().username("xyz").addedBy(savedAdmin).build();
+    Merchant merchant =  Merchant
+      .builder()
+      .username("xyz")
+      .email("ch@gmail.com")
+      .password("jamil")
+      .addedBy(savedAdmin)
+      .build();
     Merchant savedMerchant = userService.createMerchant(merchant) ;
 
     Payment payment1 = Payment.builder().merchant(savedMerchant).build();
