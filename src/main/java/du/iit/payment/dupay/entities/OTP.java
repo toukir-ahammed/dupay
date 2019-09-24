@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -18,8 +19,12 @@ import java.time.LocalDateTime;
 @Table(name = "otp", indexes = {@Index(name = "idx_otp_email", columnList = "otp_email")})
 public class OTP{
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  @GeneratedValue(generator = "UUID")
+  @GenericGenerator(
+          name = "UUID",
+          strategy = "org.hibernate.id.UUIDGenerator"
+  )
+  private String id;
 
   @CreationTimestamp
   private LocalDateTime otpDate;

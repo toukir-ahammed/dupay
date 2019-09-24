@@ -4,6 +4,7 @@ import du.iit.payment.dupay.data.NotificationStatus;
 import lombok.Data;
 import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -15,8 +16,12 @@ import java.time.LocalDateTime;
   indexes = {@Index(name = "idx_time", columnList = "notification_date")})
 public class Notification{
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  @GeneratedValue(generator = "UUID")
+  @GenericGenerator(
+          name = "UUID",
+          strategy = "org.hibernate.id.UUIDGenerator"
+  )
+  private String id;
 
   @CreationTimestamp
   @Column(name = "notification_date")

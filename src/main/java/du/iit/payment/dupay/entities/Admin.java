@@ -2,6 +2,7 @@ package du.iit.payment.dupay.entities;
 
 import lombok.*;
 import lombok.experimental.Tolerate;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -18,8 +19,12 @@ import javax.validation.constraints.NotBlank;
 })
 public class Admin {
   @Id
-  @GeneratedValue(strategy=GenerationType.IDENTITY)
-  private Long id;
+  @GeneratedValue(generator = "UUID")
+  @GenericGenerator(
+          name = "UUID",
+          strategy = "org.hibernate.id.UUIDGenerator"
+  )
+  private String id;
 
   @NotBlank
   @Length(max = 20)

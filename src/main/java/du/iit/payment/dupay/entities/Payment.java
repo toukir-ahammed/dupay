@@ -4,6 +4,7 @@ package du.iit.payment.dupay.entities;
 import lombok.Builder;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -17,8 +18,12 @@ import java.time.LocalDateTime;
   @Index(name = "idx_merchant_id", columnList = "merchant_id")})
 public class Payment {
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  @GeneratedValue(generator = "UUID")
+  @GenericGenerator(
+          name = "UUID",
+          strategy = "org.hibernate.id.UUIDGenerator"
+  )
+  private String id;
 
   @CreationTimestamp
   @Column(name = "pay_date")

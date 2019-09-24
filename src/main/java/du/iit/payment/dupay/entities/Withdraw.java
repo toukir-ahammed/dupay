@@ -5,6 +5,7 @@ import du.iit.payment.dupay.data.WithdrawWalletType;
 import lombok.Data;
 import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -16,8 +17,12 @@ import java.time.LocalDateTime;
 @Table(name = "withdraw")
 public class Withdraw {
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  @GeneratedValue(generator = "UUID")
+  @GenericGenerator(
+          name = "UUID",
+          strategy = "org.hibernate.id.UUIDGenerator"
+  )
+  private String id;
 
   @CreationTimestamp
   private LocalDateTime withdrawDate;
