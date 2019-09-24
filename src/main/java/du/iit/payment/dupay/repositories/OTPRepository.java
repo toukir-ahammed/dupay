@@ -1,6 +1,6 @@
-package du.iit.payment.dupay.repository;
+package du.iit.payment.dupay.repositories;
 
-import du.iit.payment.dupay.entity.OTP;
+import du.iit.payment.dupay.entities.OTP;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
