@@ -8,5 +8,10 @@ pipeline {
         sh './gradlew clean build'
       }
     }
+    stage('Run') {
+      steps {
+        sh './gradlew bootRun'
+      }
+    }
   }
 }
